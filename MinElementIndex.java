@@ -27,7 +27,7 @@ public class MinElementIndex {
 		for (int i = 1; i <= arr.length - 1; i++) {
 			// now if the curr element is less the previous element then we can update the
 			// idx of min_idx variable
-			if (arr[i] < arr[i - 1]) {
+			if (arr[i] < arr[min_idx]) {
 				min_idx = i;
 			}
 		}
