@@ -44,9 +44,21 @@ public class SubArraySumsDivisibleByK {
 		// Loop the array and get the cumulative count
 		// Prefix[i] = prefix[i-1]+arr[i-1]
 		for (int i = 1; i < cumulativeArray.length; i++) {
-			// cumulativeArray[i] = (cumulativeArray[i - 1] + arr[i]) % k;
-			cumulativeArray[i] = (cumulativeArray[i - 1] + arr[i - 1]) % k;
+			// Calculate the sum 
+			int sum = cumulativeArray[i - 1] + arr[i - 1];
+			// Calculate the cumulative array by sum mod k
+			cumulativeArray[i] = sum % k;
+			// If the sum value less than 0, then add mod value with sum. If not this will lead into array index out of bound exception
+			if(cumulativeArray[i]<0) {
+				cumulativeArray[i] = cumulativeArray[i]+k;
+			}
+			
+			// cumulativeArray[i] = (cumulativeArray[i - 1] + arr[i - 1]) % k;
 		}
+
+//		for (int l = 1; l < cumulativeArray.length; l++) {
+//			cumulativeArray[l] = cumulativeArray[l] % k;
+//		}
 		System.out.println("cumulativeArray");
 		for (int ele : cumulativeArray) {
 			System.out.print(ele + " ");
