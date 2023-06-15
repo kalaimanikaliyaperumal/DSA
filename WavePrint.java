@@ -1,5 +1,3 @@
-//package src;
-
 import java.util.Scanner;
 
 class WavePrint {
@@ -36,7 +34,7 @@ class WavePrint {
 		}
 	}
 
-	// Driver Code
+	
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
