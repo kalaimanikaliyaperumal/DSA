@@ -18,7 +18,7 @@ public class BookAllocationProblem {
 		// Get the input as number of students
 		int numberOfStudents = sc.nextInt();
 
-		// Initiaze a array with size
+		// Initialize a array with size
 		int[] arr = new int[size];
 
 		// Take a input of an array with for loop
@@ -34,13 +34,18 @@ public class BookAllocationProblem {
 
 	private static int bookAllocation(int[] arr, int nos) {
 		// TODO Auto-generated method stub
+		// Initialize low as 1 as the student should read minimum 1 page
 		int low = 1;
+		// Initialize high value as 0
 		int high = 0;
+		// Initialize ans as 0
 		int ans = 0;
+		// Loop until end and update high variable with total
 		for (int i = 0; i < arr.length; i++) {
 			high += arr[i];
 		}
 		System.out.println("high:" + high);
+		// While low less than or equal high continue the loop
 		while (low <= high) {
 			// Calculate mid as low+(high-low)/2
 			int mid = low + (high - low) / 2;
@@ -64,24 +69,37 @@ public class BookAllocationProblem {
 		return ans;
 	}
 
+	// Function to find the passing mid number satisfy the condition or not
 	private static boolean isItPossible(int[] arr, int mid, int nos) {
+		// Initialize student value as 1
 		int student = 1;
+		// Initialize read_page value as 0
 		int read_page = 0;
+		// Initialize i value as 0
 		int i = 0;
-
+		// Loop until i value less than array length
 		while (i < arr.length) {
+			// Check if read page value and arr[i] total value less than or equal to mid
 			if (read_page + arr[i] <= mid) {
+				// if this condition satifies update read_page variable
 				read_page += arr[i];
+				// increment i value
 				i++;
-			} else {
+			}
+			// If the condition falis
+			else {
+				// increment the student value
 				student++;
+				// reset the read_page value as 0
 				read_page = 0;
 			}
+			// Check if the student value greater than the total no of students then return
+			// false
 			if (student > nos) {
 				return false;
 			}
 		}
-
+		// If the flow reached here return true
 		System.out.println("mid value before returning true:" + mid);
 		return true;
 	}
